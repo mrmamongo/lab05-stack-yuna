@@ -2,8 +2,8 @@
 #include <gtest/gtest.h>
 
 #include <utility>
-
-#include "FirstStack.hpp"
+#include "FirstInhStack.hpp"
+using std::string;
 
 class MyClass {
   string name;
@@ -12,8 +12,8 @@ class MyClass {
   explicit MyClass(int value_ = 0, string name_ = "EMPTY")
       : name(std::move(name_)), value(value_){}
 
-  string GetName() const {return name;}
-  int GetValue() const {return value;}
+  [[nodiscard]] string GetName() const {return name;}
+  [[nodiscard]] int GetValue() const {return value;}
 
   bool operator==( const MyClass& ref ) {
     bool out = false;

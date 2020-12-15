@@ -5,8 +5,8 @@
 #include <gtest/gtest.h>
 
 #include <utility>
-
-#include "SecondStack.hpp"
+#include "SecondInhStack.hpp"
+using std::string;
 
 class NotCopiableClass {
   string name;
@@ -29,18 +29,6 @@ class NotCopiableClass {
   string GetName() const {return name;}
   int GetValue() const {return value;}
 };
-
-TEST(SecondStack, CellTest) {
-  NotCopiableClass notCopiableObject;
-
-  SecondStack<NotCopiableClass>::Cell emptyCell;
-  SecondStack<NotCopiableClass>::Cell cell(std::move(notCopiableObject));
-
-  EXPECT_EQ(emptyCell.value.GetValue(), 0);
-  EXPECT_EQ(emptyCell.value.GetName(), "EMPTY");
-  EXPECT_EQ(cell.value.GetValue(), 0);
-  EXPECT_EQ(cell.value.GetName(), "EMPTY");
-}
 
 TEST(SecondStack, NullTest) {
   SecondStack<NotCopiableClass> nullStack;
